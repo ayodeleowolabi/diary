@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +11,7 @@
       {% comment %} href="{% static 'images/splash.svg' %}" {% endcomment %}
     />
     <title>Diary</title>
-    {% comment %} <link rel="stylesheet" href="{% static 'css/base.css' %}" /> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     {% block head %} {% endblock %}
   </head>
   <body>
@@ -30,6 +31,10 @@
             <form id="logout-form" method="post" action="{% url 'logout' %}">
               {% csrf_token %}
               <button type="submit">Log Out</button>
+              <button type="submit">New Entry</button>
+              <button type="submit">New Goal</button>
+              <button type="submit">Your Goals</button>
+              <button type="submit">Your Entries</button>
             </form>
           </li>
           

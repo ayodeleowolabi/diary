@@ -1,0 +1,57 @@
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: baseline;
+    margin: 2rem auto; /* Add margin for better spacing */
+}
+
+.card {
+    width: 15vmin; /* Larger to enhance readability */
+    margin: 2vmin; /* More balanced margin */
+    border: var(--borders);
+    box-shadow: var(--card-box-shadow);
+    transition: transform 0.3s ease; /* Add transition for hover effects */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slight hover effect to engage user */
+}
+
+.card-img-container {
+    width: 10vmin; 
+    height: 10vmin;
+    margin: 0 auto; /* Centers the image */
+}
+
+.card-img-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 1rem;
+    text-align: center; /* Center text within the card */
+}
+
+.card > a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.card h2 {
+    margin: 1rem 0;
+    font-size: var(--font-xl);
+}
+
+.page-header {
+    text-align: center; /* Center page header */
+    margin-bottom: 2rem;
+}
+
+.page {
+    max-width: 80vmin; /* Increase width to improve content visibility */
+    margin: 0 auto;
+}

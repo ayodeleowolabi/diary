@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 import requests
 from django.contrib.auth.views import LoginView
+from .models import Diary
 
 # Create your views here.
 
@@ -23,3 +24,9 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
+
+
+def diary_index(request):
+    diarys = Diary.objects.all()
+    print(diarys)
+    return render(request, 'diary/index.html', {'diarys': diarys})
