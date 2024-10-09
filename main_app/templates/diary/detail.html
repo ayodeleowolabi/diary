@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/diary/diary-detail.css' %}" />
 {% endblock %}
 
-{% block content %}
+{% block contentone %}
 {% if today %}
 <h1> Today's Diary </h1>
 {% else %}
@@ -37,6 +37,39 @@
         {%csrf_token%}
         {{ physical_form.as_p }}
         <button type="submit" class="btn submit"> Add Physical Entry</button>
+    </form>
+    {% endif %}
+</section>
+{%endblock%}
+
+{% block contenttwo %}
+<section class="diary-container item-two">
+    <h2> Mental Log for {{diary.date}}</h2>
+    {% if diary.mental_set.count%}
+    {% for diary in diary.mental_set.all%}
+    <ul>
+        <p>{{diary.fears}}</p>
+        <p>{{diary.meditation}}</p>
+        <p>{{diary.goals}}</p>
+        
+    </ul>
+    <div class='mental-actions'>
+        {% comment %} <a href="{% url 'physical-update' diary.id%}" class="btn warn">Edit</a>
+        <a href="{% url 'physical-delete' diary.id%}" class="btn danger">Delete</a> {% endcomment %}
+    {% endfor %}
+    {% else %}
+    <div class="subsection-content">
+     
+    </div>
+    <form 
+        method="post" 
+        class="subsection-content" 
+        autocomplete="off"
+        action="{% url 'add-mental' diary.id%}">
+        {%csrf_token%}
+        {{ mental_form.as_p }}
+       
+        <button type="submit" class="btn submit"> Add Mental Entry</button>
     </form>
     {% endif %}
 </section>

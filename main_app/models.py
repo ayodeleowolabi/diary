@@ -52,10 +52,11 @@ class Physical(models.Model):
     breakfast = models.CharField(max_length=100, blank=True, null=True)
     lunch = models.CharField(max_length=100, blank=True, null=True)
     dinner = models.CharField(max_length=100, blank=True, null=True)
-    snacks = models.CharField(max_length=100, blank=True, null=True)
+    snacks = models.TextField(max_length=100, blank=True, null=True)
     exercise = models.BooleanField(default=False, blank=True, null=True)
     body_part_worked = models.CharField(blank=True, null=True)
-    workout_link = models.TextField(blank=True, null=True)
+    length_of_workout = models.IntegerField(default=0, blank=True, null=True)
+    workout_link = models.TextField('Type of Workout', blank=True, null=True)
     diary_key = models.ForeignKey(Diary, on_delete=models.CASCADE)
     
     def __str__(self):
@@ -69,7 +70,7 @@ class Mental(models.Model):
     fears = models.TextField(max_length=100, blank=True, null=True)
     desires = models.TextField(max_length=100, blank=True, null=True)
     learning_goals = models.ForeignKey(Goals, on_delete=models.CASCADE, blank=True, null=True)
-    diary_key = models.ForeignKey(Diary, on_delete=models.CASCADE, blank=True, null=True)
+    diary_key = models.ForeignKey(Diary, on_delete=models.CASCADE)
     
     
     def __str__(self):

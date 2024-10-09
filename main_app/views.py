@@ -5,9 +5,9 @@ import requests
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Diary, Physical
+from .models import Diary, Physical, Mental
 from django.utils import timezone
-from .forms import PhysicalForm
+from .forms import PhysicalForm, MentalForm
 
 # Create your views here.
 
@@ -60,10 +60,20 @@ class PhysicalUpdate(UpdateView):
 class PhysicalDelete(DeleteView):
     model = Physical
     success_url = '/diary/'
+    
+
+def add_mental(request, diary_id):
+    form = MentalForm(request.POST)
+    if form.is_valid():
+        new_mental = form.save(commit=False)
+        new_mental.diary_id = diary_id
+        new_mental.save()
+    return redirect('diary-detail', diary_id=diary_id)
 
 def home(request):
-    response = requests.get('https://zenquotes.io/api/today/q')
+    diary = Diary.objects.filter(user=request.user)
+    response = requests.get('https://zenquotes.io/api/random/q')
     quote = response.json()[0]['q']
     author = response.json()[0]['a']
     print(quote)
-    return render(request, 'home.html', {'q': quote, 'a': author })
+    return render(request, 'home.html', {'q': quote, 'a': author, 'diary': diary})
