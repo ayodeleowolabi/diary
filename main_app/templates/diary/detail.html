@@ -1,0 +1,26 @@
+{%extends 'base.html' %}
+{% load static %}
+{%block head %}
+<link rel="stylesheet" href="{% static 'css/diary/diary-detail.css' %}" />
+{% endblock %}
+{% block content %}
+{% if today %}
+<h1> Today's Diary </h1>
+{% else %}
+<h1> Diary for {{ diary.date }}</h1>
+{% endif %}
+
+<section class="diary-container">
+    <h3> Physical </h3>
+    {% if diary.physical_set.count > 0 %}
+    {% for entry in diary.mental_set.all%}
+    <p>{{entry.desires}}</p>
+    {% endfor %}
+    {% else %}
+    <div class="subsection-content">
+        <p>You have no entries in the Physical log on {{diary.date}}</p>
+    </div>
+{% endif %}
+</section>
+{% endblock %}
+

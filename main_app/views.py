@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 import requests
 from django.contrib.auth.views import LoginView
 from .models import Diary
+from django.utils import timezone
 
 # Create your views here.
 
@@ -27,6 +28,15 @@ def signup(request):
 
 
 def diary_index(request):
+    today = timezone.now().date()
+    diary = Diary.objects.filter(date=today, user=request.user)
+    if not diary: 
+        diary = Diary.objects.create(user=request.user, date=today)   
     diarys = Diary.objects.all()
-    print(diarys)
     return render(request, 'diary/index.html', {'diarys': diarys})
+
+def diary_detail(request, diary_id):
+    today = timezone.now().date()
+    diary = Diary.objects.get(id=diary_id)
+    print(diary)
+    return render(request, 'diary/detail.html', {'diarys': diary, 'today': today == diary.date})

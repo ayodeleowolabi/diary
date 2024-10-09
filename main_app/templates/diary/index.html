@@ -8,7 +8,7 @@
 <section class="card-container">
     {% for diary in diarys %}
     <div class="card">
-        <a href="">
+        <a href="{% url 'diary-detail' diary.id %}">
             <div class='card-content'>
                 <div class="card-img-container">
                     <img
