@@ -16,6 +16,7 @@ body {
     font-style: normal;
     height: 100vh;
     background-color: #f0f0f0;
+    
 
    
 }
@@ -24,7 +25,7 @@ body {
   justify-content: left;
   flex-direction: column;
   row-gap: 30vh;
-  
+
 
  
   
@@ -71,6 +72,12 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+h3 {
+  font-size: 30px;
+  text-align: center;
+
+}
+
 nav a {
     text-decoration: none;
     font-weight: 600;
@@ -83,9 +90,12 @@ nav a {
   
   nav ul {
     display: flex;
+    flex-direction: row;
+    column-gap: 2vmin;
     align-items: left;
     justify-content: right;
     flex-wrap: wrap;
+   
    
   }
   

@@ -27,14 +27,13 @@
       <nav>
         <ul>
           {% if user.is_authenticated %} 
+          {% comment %} <a href ="submit">New Goal</a> {% endcomment %}
+          <a href={% url 'diary-index' %}>Diary Log</a>
+          <a href={% url "home" %}>Home</a>
           <li>
             <form id="logout-form" method="post" action="{% url 'logout' %}">
               {% csrf_token %}
-              <button type="submit">Log Out</button>
-              <button type="submit">New Entry</button>
-              <button type="submit">New Goal</button>
-              <button type="submit">Your Goals</button>
-              <button type="submit">Your Entries</button>
+              <a href={% url 'logout' %}> Log Out</a>              
             </form>
           </li>
           
@@ -42,11 +41,6 @@
           {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
-          {% comment %} <li><a href="{% url 'cat-index' %}">Your Diary</a></li>
-          <li><a href="{% url 'toy-index' %}">All Toys</a></li>
-          <li><a href="{% url 'cat-create' %}">Add a Cat</a></li>
-          <li><a href="{% url 'toy-create' %}">Add a Toy</a></li>
-          <li><a href="{% url 'about' %}">About</a></li> {% endcomment %}
           {% endif %} 
         </ul>
       </nav>

@@ -11,8 +11,6 @@ from .forms import PhysicalForm
 
 # Create your views here.
 
-class Home(LoginView):
-    template_name = 'home.html'
 
 
 def signup(request):
@@ -63,3 +61,9 @@ class PhysicalDelete(DeleteView):
     model = Physical
     success_url = '/diary/'
 
+def home(request):
+    response = requests.get('https://zenquotes.io/api/today/q')
+    quote = response.json()[0]['q']
+    author = response.json()[0]['a']
+    print(quote)
+    return render(request, 'home.html', {'q': quote, 'a': author })
