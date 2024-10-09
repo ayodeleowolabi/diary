@@ -3,6 +3,7 @@
 {%block head %}
 <link rel="stylesheet" href="{% static 'css/diary/diary-detail.css' %}" />
 {% endblock %}
+
 {% block content %}
 {% if today %}
 <h1> Today's Diary </h1>
@@ -10,17 +11,33 @@
 <h1> Diary for {{ diary.date }}</h1>
 {% endif %}
 
-<section class="diary-container">
-    <h3> Physical </h3>
-    {% if diary.physical_set.count > 0 %}
-    {% for entry in diary.mental_set.all%}
-    <p>{{entry.desires}}</p>
+<section class="diary-container item-one">
+    <h2> Physical Log for {{diary.date}}</h2>
+    {% if diary.physical_set.count%}
+    {% for diary in diary.physical_set.all%}
+    <ul>
+        <p>{{diary.exercise}}</p>
+        <p>{{diary.breakfast}}</p>
+        <p>{{diary.lunch}}</p>
+        
+    </ul>
+    <div class='physical-actions'>
+        <a href="{% url 'physical-update' diary.id%}" class="btn warn">Edit</a>
+        <a href="{% url 'physical-delete' diary.id%}" class="btn danger">Delete</a>
     {% endfor %}
     {% else %}
     <div class="subsection-content">
-        <p>You have no entries in the Physical log on {{diary.date}}</p>
+     
     </div>
-{% endif %}
+    <form 
+        method="post" 
+        class="subsection-content" 
+        autocomplete="off"
+        action="{% url 'add-physical' diary.id%}">
+        {%csrf_token%}
+        {{ physical_form.as_p }}
+        <button type="submit" class="btn submit"> Add Physical Entry</button>
+    </form>
+    {% endif %}
 </section>
-{% endblock %}
-
+{%endblock%}

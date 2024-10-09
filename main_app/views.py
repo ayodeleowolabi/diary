@@ -3,8 +3,11 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 import requests
 from django.contrib.auth.views import LoginView
-from .models import Diary
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Diary, Physical
 from django.utils import timezone
+from .forms import PhysicalForm
 
 # Create your views here.
 
@@ -38,5 +41,25 @@ def diary_index(request):
 def diary_detail(request, diary_id):
     today = timezone.now().date()
     diary = Diary.objects.get(id=diary_id)
+    physical_form = PhysicalForm()
     print(diary)
-    return render(request, 'diary/detail.html', {'diarys': diary, 'today': today == diary.date})
+    return render(request, 'diary/detail.html', {'diary': diary, 'today': today == diary.date, 'physical_form': physical_form})
+
+
+def add_physical(request, diary_id):
+    form = PhysicalForm(request.POST)
+    if form.is_valid():
+        new_physical = form.save(commit=False)
+        new_physical.diary_id = diary_id
+        new_physical.save()
+    return redirect('diary-detail', diary_id=diary_id)
+
+class PhysicalUpdate(UpdateView):
+    model = Physical
+    fields = '__all__'
+    success_url = '/diary/'
+    
+class PhysicalDelete(DeleteView):
+    model = Physical
+    success_url = '/diary/'
+

@@ -10,11 +10,65 @@ html {
 }
 
 body {
+    display: flexbox;
     font-family: "Permanent Marker";
     font-weight: 400;
     font-style: normal;
+    height: 100vh;
+    background-color: #f0f0f0;
+
    
-   
+}
+.home-page{
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  row-gap: 30vh;
+  
+
+ 
+  
+}
+
+.welcome-container {
+  position: relative; /* Establish a stacking context for absolute positioning */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 40%;
+  height: 10vh;
+  background:rgb(69, 204, 204);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.message-container{
+  display:flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+ 
+
+
+}
+
+
+
+.floating-element {
+  position: absolute;
+  top: -40px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background:rgba(255, 69, 0, 0.8);
+  border-radius: 60%;
+  z-index: 4;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  animation: float 6s ease-in-out infinite;
 }
 
 nav a {
@@ -29,8 +83,8 @@ nav a {
   
   nav ul {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: right;
     flex-wrap: wrap;
    
   }
