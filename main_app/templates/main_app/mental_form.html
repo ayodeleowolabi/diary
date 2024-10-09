@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load static%}
+{% block head %}
+<link rel="stylesheet" href="{%static 'css/form.css' %}"/>
+{% endblock %}
+{% block content %}
+<div class="page-header">
+    {%if mental %}
+        <h1>Edit {{diary.date}}</h1>
+    {%else %}
+        <h1> Add a Mental Entry</h1>
+    {%endif%}
+</div>
+<form 
+    method="post" 
+    class="form-container" 
+    action="">
+    {%csrf_token%}
+    {{ form.as_table }}
+    <button type="submit" class="btn submit"> Submit</button>
+</form>
+
+{% endblock %}

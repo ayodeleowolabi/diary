@@ -5,9 +5,9 @@ import requests
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Diary, Physical, Mental
+from .models import Diary, Physical, Mental, Emotional
 from django.utils import timezone
-from .forms import PhysicalForm, MentalForm
+from .forms import PhysicalForm, MentalForm, EmotionalForm
 
 # Create your views here.
 
@@ -40,8 +40,10 @@ def diary_detail(request, diary_id):
     today = timezone.now().date()
     diary = Diary.objects.get(id=diary_id)
     physical_form = PhysicalForm()
-    print(diary)
-    return render(request, 'diary/detail.html', {'diary': diary, 'today': today == diary.date, 'physical_form': physical_form})
+    mental_form = MentalForm()
+    emotional_form = EmotionalForm()
+    print(diary_id)
+    return render(request, 'diary/detail.html', {'diary': diary, 'today': today == diary.date, 'physical_form': physical_form, 'mental_form': mental_form, 'emotional_form': emotional_form})
 
 
 def add_physical(request, diary_id):
@@ -56,6 +58,7 @@ class PhysicalUpdate(UpdateView):
     model = Physical
     fields = '__all__'
     success_url = '/diary/'
+
     
 class PhysicalDelete(DeleteView):
     model = Physical
@@ -69,6 +72,37 @@ def add_mental(request, diary_id):
         new_mental.diary_id = diary_id
         new_mental.save()
     return redirect('diary-detail', diary_id=diary_id)
+
+
+class MentalUpdate(UpdateView):
+    model = Mental
+    fields = '__all__'
+    success_url = '/diary/'
+    
+class MentalDelete(DeleteView):
+    model = Mental
+    success_url = '/diary/'
+
+
+
+def add_emotional(request, diary_id):
+    form = EmotionalForm(request.POST)
+    if form.is_valid():
+        new_emotional = form.save(commit=False)
+        new_emotional.diary_id = diary_id
+        new_emotional.save()
+    return redirect('diary-detail', diary_id=diary_id)
+
+class EmotionalUpdate(UpdateView):
+    model = Emotional
+    fields = '__all__'
+    success_url = '/diary/'
+
+    
+class EmotionalDelete(DeleteView):
+    model = Emotional
+    success_url = '/diary/'
+    
 
 def home(request):
     diary = Diary.objects.filter(user=request.user)

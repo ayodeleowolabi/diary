@@ -80,12 +80,18 @@ class Mental(models.Model):
     
 class Emotional(models.Model):
     community_check = models.BooleanField(default=False, blank=True, null=True)
-    community_activities = models.CharField(blank=True, null=True)
     time_spent = models.IntegerField(default=0, blank=True, null=True)
+    community_activities = models.CharField(blank=True, null=True)
     gratitude_list = models.TextField(blank=True, null=True)
     vices = models.TextField("", blank=True, null=True)
     drink = models.BooleanField(default=False, blank=True, null=True)
     number_of_drinks = models.IntegerField(default=0, blank=True, null=True)
+    evening_mood = models.CharField(
+        choices=MOOD,
+        default=MOOD[0][0],
+        blank=True, 
+        null=True
+    )
     morning_mood = models.CharField(
         choices=MOOD,
         default=MOOD[0][0],

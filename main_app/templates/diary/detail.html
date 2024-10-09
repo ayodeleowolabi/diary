@@ -11,7 +11,7 @@
 <h1> Diary for {{ diary.date }}</h1>
 {% endif %}
 
-<section class="diary-container item-one">
+<section class="diary-container physical">
     <h2> Physical Log for {{diary.date}}</h2>
     {% if diary.physical_set.count%}
     {% for diary in diary.physical_set.all%}
@@ -43,9 +43,9 @@
 {%endblock%}
 
 {% block contenttwo %}
-<section class="diary-container item-two">
+<section class="diary-container mental">
     <h2> Mental Log for {{diary.date}}</h2>
-    {% if diary.mental_set.count%}
+    {% if diary.mental_set.count %}
     {% for diary in diary.mental_set.all%}
     <ul>
         <p>{{diary.fears}}</p>
@@ -54,8 +54,8 @@
         
     </ul>
     <div class='mental-actions'>
-        {% comment %} <a href="{% url 'physical-update' diary.id%}" class="btn warn">Edit</a>
-        <a href="{% url 'physical-delete' diary.id%}" class="btn danger">Delete</a> {% endcomment %}
+        <a href="{% url 'mental-update' diary.id%}" class="btn warn">Edit</a>
+        <a href="{% url 'mental-delete' diary.id%}" class="btn danger">Delete</a> 
     {% endfor %}
     {% else %}
     <div class="subsection-content">
@@ -70,6 +70,43 @@
         {{ mental_form.as_p }}
        
         <button type="submit" class="btn submit"> Add Mental Entry</button>
+    </form>
+    {% endif %}
+</section>
+{%endblock%}
+
+
+{% block contentthree %}
+<section class="diary-container emotional">
+    <h2> Emotional Log for {{diary.date}}</h2>
+    {% if diary.emotional_set.count %}
+    {% for diary in diary.emotional_set.all%}
+    <ul>
+        <p>{{diary.community_check}}</p>
+        <p>{{diary.time_spent}}</p>
+        <p>{{diary.gratitude_list}}</p>
+        <p>{{diary.morning_mood}}</p>
+        <p>{{diary.evening_mood}}</p>
+        <p>{{diary.gratitude_list}}</p>
+        
+    </ul>
+    <div class='emotional-actions'>
+        <a href="{% url 'emotional-update' diary.id%}" class="btn warn">Edit</a>
+        <a href="{% url 'emotional-delete' diary.id%}" class="btn danger">Delete</a> 
+    {% endfor %}
+    {% else %}
+    <div class="subsection-content">
+     
+    </div>
+    <form 
+        method="post" 
+        class="subsection-content" 
+        autocomplete="off"
+        action="{% url 'add-emotional' diary.id%}">
+        {%csrf_token%}
+        {{ emotional_form.as_p }}
+       
+        <button type="submit" class="btn submit"> Add Emotional Entry</button>
     </form>
     {% endif %}
 </section>
