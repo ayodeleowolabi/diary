@@ -1,12 +1,16 @@
-.diary-container{
-    display:inline-grid;
-    grid-template-columns: 200px 1fr;
 
-    padding: 34px;
-    background-color: beige
+main {
+    display:flex;
+    flex-direction: row;
+    column-gap: 5vmin;
 
-  
 }
+
+.physical{
+    background-image: url('/static/images/diary.jpg');
+}
+
+
 .item-one{
     grid-column: 1;
 }

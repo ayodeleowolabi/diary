@@ -45,6 +45,8 @@ class DynamicChoiceField(models.CharField):
 
 class Goals(models.Model):
    goal = DynamicChoiceField(max_length=100, blank=True, null=True)
+   def __str__(self):
+        return self.goal if self.goal else 'No Goal'
 
 
 class Physical(models.Model):
@@ -56,6 +58,8 @@ class Physical(models.Model):
     exercise = models.BooleanField(default=False, blank=True, null=True)
     body_part_worked = models.CharField(blank=True, null=True)
     length_of_workout = models.IntegerField(default=0, blank=True, null=True)
+    physical_goals = models.ForeignKey(Goals, on_delete=models.CASCADE, blank=True, null=True)
+
     workout_link = models.TextField('Type of Workout', blank=True, null=True)
     diary_key = models.ForeignKey(Diary, on_delete=models.CASCADE)
     
@@ -86,6 +90,7 @@ class Emotional(models.Model):
     vices = models.TextField("", blank=True, null=True)
     drink = models.BooleanField(default=False, blank=True, null=True)
     number_of_drinks = models.IntegerField(default=0, blank=True, null=True)
+    emotional_goals = models.ForeignKey(Goals, on_delete=models.CASCADE, blank=True, null=True)
     evening_mood = models.CharField(
         choices=MOOD,
         default=MOOD[0][0],
@@ -105,3 +110,8 @@ class Emotional(models.Model):
         return f'Activities: {self.community_activities}, Vices: {self.vices}'
     
     
+class Photo(models.Model):
+    url=models.CharField(max_length=200)
+    diary = models.ForeignKey(Diary, on_delete=models.CASCADE)
+    def __str__(self):
+        return f"Photo for diary_id:' {self.diary_id} @{self.url}"
