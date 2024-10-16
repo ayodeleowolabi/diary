@@ -10,17 +10,16 @@
 <section class="home-page">
     <section class="welcome-container" style="padding:3px">
     {% if user.is_authenticated %}
-    <h1>How are you doing today?</h1>
     {% else %}
     <p>You are not logged in</p>
     {% endif %}
-        <div class="floating-element"></div>
+
     </section>
     {% endblock %}
 
     {%block part %}
     <div class="message-container">
-        <h1>Welcome {{user.username}}</h1>
+        <h1>Daily Wisdom</h1>
         <h2>{{ q }} </h>
         <h3> {{ a }} </h3>
     </div>

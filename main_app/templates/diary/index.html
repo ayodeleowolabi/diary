@@ -26,3 +26,16 @@
     {%endfor%}
 </section>
 {%endblock%}
+
+{%block goal%}
+<form 
+method="post" 
+class="subsection-content" 
+autocomplete="off"
+action="{% url 'goals-create' goals.id%}">
+{%csrf_token%}
+{{ goals_form.as_p }}
+<button type="submit" class="btn submit"> Add Goal Entry</button>
+</form>
+
+{%endblock%}

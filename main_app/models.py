@@ -50,7 +50,6 @@ class Goals(models.Model):
 
 
 class Physical(models.Model):
-    breakfast_check = models.BooleanField(default=False)
     breakfast = models.CharField(max_length=100, blank=True, null=True)
     lunch = models.CharField(max_length=100, blank=True, null=True)
     dinner = models.CharField(max_length=100, blank=True, null=True)

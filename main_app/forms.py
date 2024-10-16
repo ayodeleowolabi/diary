@@ -1,5 +1,5 @@
 from django import forms
-from .models import Physical, Mental, Emotional
+from .models import Physical, Mental, Emotional, Diary, Goals
 
 
 class PhysicalForm(forms.ModelForm):
@@ -19,4 +19,9 @@ class EmotionalForm(forms.ModelForm):
         model = Emotional
         fields = '__all__'
        
+       
+class GoalsForm(forms.ModelForm):
+    class Meta:
+        model = Goals
+        fields = '__all__'
         

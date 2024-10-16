@@ -6,20 +6,24 @@
 
 {% block contentone %}
 {% if today %}
-<h1> Today's Diary </h1>
+<h1> Diary log for {{diary.date}} </h1>
 {% else %}
 <h1> Diary for {{ diary.date }}</h1>
 {% endif %}
 
 <section class="diary-container physical">
-    <h2> Physical Log for {{diary.date}}</h2>
+    
+    <h2> Physical</h2>
     {% if diary.physical_set.count%}
     {% for diary in diary.physical_set.all%}
-    <ul>
-        <p>{{diary.exercise}}</p>
-        <p>{{diary.breakfast}}</p>
-        <p>{{diary.lunch}}</p>
-        
+    <ul class='form-container'>
+        <p style:"background-color: white"> Breakfast: {{diary.breakfast}}</p>
+        <p>Lunch: {{diary.lunch}}</p>
+        <p>Dinner: {{diary.dinner}}</p>
+        <p> Snacks: {{diary.snacks}}</p>
+        <p> Area of Focus: {{diary.body_part_worked}}</p>
+        <p> Time Spent: {{diary.time_spent}}</p>
+        <p> Exercise: {{diary.exercise}}</p>
     </ul>
     <div class='physical-actions'>
         <a href="{% url 'physical-update' diary.id%}" class="btn warn">Edit</a>
@@ -44,7 +48,7 @@
 
 {% block contenttwo %}
 <section class="diary-container mental">
-    <h2> Mental Log for {{diary.date}}</h2>
+    <h2> Mental</h2>
     {% if diary.mental_set.count %}
     {% for diary in diary.mental_set.all%}
     <ul>
@@ -78,7 +82,7 @@
 
 {% block contentthree %}
 <section class="diary-container emotional">
-    <h2> Emotional Log for {{diary.date}}</h2>
+    <h2> Emotional</h2>
     {% if diary.emotional_set.count %}
     {% for diary in diary.emotional_set.all%}
     <ul>
@@ -109,5 +113,7 @@
         <button type="submit" class="btn submit"> Add Emotional Entry</button>
     </form>
     {% endif %}
+    <a href="{% url 'physical-delete' diary.id%}" class="btn danger">Delete</a>
+
 </section>
 {%endblock%}

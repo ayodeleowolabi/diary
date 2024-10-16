@@ -8,7 +8,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Diary, Physical, Mental, Emotional, Photo
+from .models import Diary, Physical, Mental, Emotional, Photo, Goals
 from django.utils import timezone
 from .forms import PhysicalForm, MentalForm, EmotionalForm
 import boto3
@@ -38,7 +38,7 @@ def diary_index(request):
     diary = Diary.objects.filter(date=today, user=request.user)
     if not diary: 
         diary = Diary.objects.create(user=request.user, date=today)   
-    diarys = Diary.objects.all()
+    diarys = Diary.objects.filter(user=request.user)
     return render(request, 'diary/index.html', {'diarys': diarys})
 
 @login_required
@@ -61,6 +61,7 @@ def add_physical(request, diary_id):
     return redirect('diary-detail', diary_id=diary_id)
 
 
+    
 class PhysicalUpdate(UpdateView):
     model = Physical
     fields = '__all__'
@@ -147,3 +148,5 @@ def add_photo(request, diary_id):
             print('An error occurred uploading file to S3')
             print(e)
     return redirect('detail', diary_id=diary_id)
+
+    
