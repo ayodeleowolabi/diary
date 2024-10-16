@@ -1,1 +1,1 @@
-web: gunicorn mylife.wsgi
+web: gunicorn diarytracker.wsgi
