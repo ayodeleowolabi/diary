@@ -26,7 +26,7 @@ li {
 }
 
 p{
-  color: white;
+  color: black;
 }
 
 h1{
@@ -91,6 +91,16 @@ nav a {
     padding: 10px;
     
   }
+#logout-form{
+  display: flex;
+  flex-direction: row;
+  column-gap: 2vmin;
+  align-items: right;
+  justify-content: right;
+  flex-wrap: wrap;
+
+
+}
   
   nav a:hover {
     color: var(--link-hover-color);
@@ -99,10 +109,10 @@ nav a {
   nav ul {
     display: flex;
     flex-direction: row;
-    column-gap: 2vmin;
-    align-items: left;
-    justify-content: right;
-    flex-wrap: wrap;
+    column-gap: 6vmin;
+    align-items: right;
+    
+
    
    
   }
@@ -113,16 +123,14 @@ nav a {
   }
 
 button {
-    cursor: pointer;
-
-
-
-    box-shadow: 4px 4px var(--main-color);
-
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  --button_radius: 0.75em;
+  --button_color: #e8e8e8;
+  --button_outline_color: #000000;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
   }
 
   
@@ -146,6 +154,7 @@ label{
     justify-content: center;
     width: 100%;
     justify-content: center;
+    font-size: medium;
 
 }
 

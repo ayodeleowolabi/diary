@@ -35,11 +35,11 @@
     </div>
     <form 
         method="post" 
-        class="diary-container" 
+        class="diary-table" 
         autocomplete="off"
         action="{% url 'add-physical' diary.id%}">
         {%csrf_token%}
-        {{ physical_form.as_p }}
+        {{ physical_form.as_table }}
         <button type="submit" class="btn submit"> Add Physical Entry</button>
     </form>
     {% endif %}
@@ -68,16 +68,18 @@
     <div class="diary-container">
      
     </div>
+    <section class="diary-container">
     <form 
         method="post" 
-        class="diary-container" 
+        class="diary-table" 
         autocomplete="off"
         action="{% url 'add-mental' diary.id%}">
         {%csrf_token%}
-        {{ mental_form.as_p }}
+        {{ mental_form.as_table }}
        
         <button type="submit" class="btn submit"> Add Mental Entry</button>
     </form>
+    </section>
     {% endif %}
 </section>
 {%endblock%}
@@ -106,11 +108,11 @@
     </div>
     <form 
         method="post" 
-        class="diary-container" 
+        class="diary-table" 
         autocomplete="off"
         action="{% url 'add-emotional' diary.id%}">
         {%csrf_token%}
-        {{ emotional_form.as_p }}
+        {{ emotional_form.as_table }}
        
         <button type="submit" class="btn submit"> Add Emotional Entry</button>
     </form>
