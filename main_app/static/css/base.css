@@ -26,7 +26,7 @@ li {
 }
 
 p{
-  color: black;
+  color:black;
 }
 
 h1{
@@ -35,6 +35,10 @@ h1{
   font-size: 90px;
 }
 
+h4{
+  color: white;
+  font-size: medium;
+}
 
 .home-page{
   display: flex;
@@ -68,18 +72,23 @@ h1{
   z-index: 5;
 }
 
+.form-container{
+display: grid;
+row-gap: 20px;
 
+}
 
 
 h2 {
-  font-size: 3vmin;
-  text-align: center;
+  font-size: 10vmin;
   color: white;
 }
 
 
 h3{
-  font-size: 2vmin;
+  font-size: 5vmin;
+  color: white;
+  text-align: center;
 }
 
 nav a {
@@ -106,11 +115,13 @@ nav a {
     color: var(--link-hover-color);
   }
   
-  nav ul {
+nav ul {
+    margin: 0px;
     display: flex;
     flex-direction: row;
     column-gap: 6vmin;
     align-items: right;
+    background-color: black;
     
 
    
@@ -131,6 +142,7 @@ button {
   border: none;
   cursor: pointer;
   border-radius: var(--button_radius);
+  
   }
 
   
@@ -143,6 +155,7 @@ button {
   
 label{
   color: #FFFFFF;
+  font-size: medium;
 }
 
 .login {

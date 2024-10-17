@@ -8,7 +8,7 @@
 }
 
 .card {
-    width: 15vmin; 
+    width: 25vmin; 
     margin: 2vmin; 
     border: var(--borders);
     box-shadow: var(--card-box-shadow);
@@ -20,7 +20,7 @@
 }
 
 .card-img-container {
-    width: 20vmin; 
+    width: 30vmin; 
     height: 20vmin;
     margin: 0 auto; 
 }

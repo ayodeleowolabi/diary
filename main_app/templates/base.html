@@ -27,7 +27,6 @@
       <nav>
         <ul>
           {% if user.is_authenticated %} 
-          {% comment %} <a href ="submit">New Goal</a> {% endcomment %}
           <a href={% url 'diary-index' %}>Diary Log</a>
           <a href={% url "home" %}>Home</a>
           <form id="logout-form" method="post" action="{% url 'logout' %}">

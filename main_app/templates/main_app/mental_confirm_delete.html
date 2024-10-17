@@ -10,7 +10,7 @@
     
   <form action="" method="post" class="form">
     {% csrf_token %}
-    <a href="{% url 'mental-delete' mental.id %}" class="btn secondary">Cancel</a>
+    <button> <a href="{% url 'diary-detail' mental.diary_key_id %}" class="btn secondary">Cancel</a></button>
     <button type="submit" class="btn danger">Yes - Delete!</button>
   </form>
   

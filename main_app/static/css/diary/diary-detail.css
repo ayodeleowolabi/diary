@@ -9,8 +9,6 @@
     margin: 5px 0;
 }
 
-
-
 .diary-container .btn {
     --button_color: #e8e8e8;
     --button_outline_color: #000000;
@@ -19,13 +17,13 @@
     border: none;
     cursor: pointer;
     border-radius: var(--button_radius);
+    text-decoration: none;
 }
 
 .diary-table {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: grey; 
     padding: 20px;
     gap: 20px;
     border-radius: 8px;
@@ -33,19 +31,20 @@
     box-sizing: border-box;
   }
 
-.diary-container .btn.warn {
-    background-color: #f0ad4e;
-}
 
-.diary-container .btn.warn:hover {
-    background-color: #ec971f;
-}
-
-.diary-container .btn.danger {
+.diary-container .danger {
     background-color: #d9534f;
+    text-decoration: none;
 }
 
 .diary-container .btn.danger:hover {
     background-color: #c9302c;
+}
+
+a {
+    align-content: right;
+    text-decoration: none;
+    color: black;
+    text-align: center;
 }
 

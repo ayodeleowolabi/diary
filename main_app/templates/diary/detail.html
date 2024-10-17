@@ -6,17 +6,17 @@
 
 {% block contentone %}
 {% if today %}
-<h1> Diary log for {{diary.date}} </h1>
+<h2> {{diary.date}} </h2>
 {% else %}
 <h1> {{ diary.date }}</h1>
 {% endif %}
 
 <section class="diary-container">
     
-    <h2> Physical</h2>
+    <h3> Physical</h3>
     {% if diary.physical_set.count%}
     {% for diary in diary.physical_set.all%}
-    <ul class='form-container'>
+    <ul>
         <p style:"background-color: white"> Breakfast: {{diary.breakfast}}</p>
         <p>Lunch: {{diary.lunch}}</p>
         <p>Dinner: {{diary.dinner}}</p>
@@ -25,14 +25,16 @@
         <p> Time Spent: {{diary.time_spent}}</p>
         <p> Exercise: {{diary.exercise}}</p>
     </ul>
-    <div class='physical-actions'>
-        <a href="{% url 'physical-update' diary.id%}" class="btn warn">Edit</a>
-        <a href="{% url 'physical-delete' diary.id%}" class="btn danger">Delete</a>
+    <div class='actions'>
+        <button><a href="{% url 'physical-update' diary.id%}" class="btn">Edit</a></button>
+        <break>
+        <button><a href="{% url 'physical-delete' diary.id%}" class="btn">Delete</a></button>
     {% endfor %}
     {% else %}
     <div class="subsection-content">
      
     </div>
+    <div class="test">
     <form 
         method="post" 
         class="diary-table" 
@@ -42,13 +44,14 @@
         {{ physical_form.as_table }}
         <button type="submit" class="btn submit"> Add Physical Entry</button>
     </form>
+</div>
     {% endif %}
 </section>
 {%endblock%}
 
 {% block contenttwo %}
 <section class="diary-container">
-    <h2> Mental</h2>
+    <h3> Mental</h3>
     {% if diary.mental_set.count %}
     {% for diary in diary.mental_set.all%}
     <ul>
@@ -60,9 +63,9 @@
      
         
     </ul>
-    <div class='mental-actions'>
-        <a href="{% url 'mental-update' diary.id%}" class="btn warn">Edit</a>
-        <a href="{% url 'mental-delete' diary.id%}" class="btn danger">Delete</a> 
+    <div class='actions'>
+        <button> <a href="{% url 'mental-update' diary.id%}" class="btn">Edit</a></button>
+        <button> <a href="{% url 'mental-delete' diary.id%}" class="btn">Delete</a></button>
     {% endfor %}
     {% else %}
     <div class="diary-container">
@@ -87,7 +90,7 @@
 
 {% block contentthree %}
 <section class="diary-container emotional">
-    <h2> Emotional</h2>
+    <h3> Emotional</h3>
     {% if diary.emotional_set.count %}
     {% for diary in diary.emotional_set.all%}
     <ul>
@@ -98,9 +101,9 @@
         <p>Evening mood: {{diary.evening_mood}}</p>
         
     </ul>
-    <div class='emotional-actions'>
-        <a href="{% url 'emotional-update' diary.id%}" class="btn warn">Edit</a>
-        <a href="{% url 'emotional-delete' diary.id%}" class="btn danger">Delete</a> 
+    <div class='actions'>
+        <button><a href="{% url 'emotional-update' diary.id%}" class="btn">Edit</a></button>
+        <button><a href="{% url 'emotional-delete' diary.id%}" class="btn">Delete</a></button>
     {% endfor %}
     {% else %}
     <div class="subsection-content">

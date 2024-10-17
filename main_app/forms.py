@@ -5,14 +5,12 @@ from .models import Physical, Mental, Emotional, Diary, Goals
 class PhysicalForm(forms.ModelForm):
     class Meta:
         model = Physical
-        fields = '__all__'
-        widgets = {'physical_goals': forms.HiddenInput()}
+        fields = ['breakfast', 'lunch', 'dinner', 'snacks', 'exercise', 'body_part_worked', 'length_of_workout', 'workout_link']
         
 class MentalForm(forms.ModelForm):
     class Meta:
         model = Mental
-        fields = '__all__'
-        widgets = {'learning_goals': forms.HiddenInput()}
+        fields = ['meditation', 'time_spent', 'fears', 'desires']
        
        
         
@@ -20,8 +18,7 @@ class MentalForm(forms.ModelForm):
 class EmotionalForm(forms.ModelForm):
     class Meta:
         model = Emotional
-        fields = '__all__'
-        widgets = {'emotional_goals': forms.HiddenInput()}
+        fields = ['community_check','time_spent','community_activities' ,'gratitude_list', 'vices','drink', 'number_of_drinks', 'evening_mood' , 'morning_mood']
        
        
 class GoalsForm(forms.ModelForm):

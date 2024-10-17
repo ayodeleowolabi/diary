@@ -56,8 +56,7 @@ def add_physical(request, diary_id):
     form = PhysicalForm(request.POST)
     if form.is_valid():
         new_physical = form.save(commit=False)
-        new_physical.diary_id = diary_id
-        print(new_physical.diary_id)
+        new_physical.diary_key_id = diary_id
         new_physical.save()
     return redirect('diary-detail', diary_id=diary_id)
 
@@ -65,7 +64,7 @@ def add_physical(request, diary_id):
     
 class PhysicalUpdate(UpdateView):
     model = Physical
-    fields = '__all__'
+    fields = ['breakfast','lunch', 'dinner', 'snacks', 'exercise', 'body_part_worked', 'length_of_workout', 'workout_link']
     success_url = '/diary/'
 
    
@@ -78,7 +77,7 @@ def add_mental(request, diary_id):
     form = MentalForm(request.POST)
     if form.is_valid():
         new_mental = form.save(commit=False)
-        new_mental.diary_id = diary_id
+        new_mental.diary_key_id = diary_id
         new_mental.save()
     return redirect('diary-detail', diary_id=diary_id)
 
@@ -86,7 +85,7 @@ def add_mental(request, diary_id):
 
 class MentalUpdate(UpdateView):
     model = Mental
-    fields = '__all__'
+    fields = ['meditation', 'time_spent', 'fears', 'desires']
     success_url = '/diary/'
 
 
@@ -102,7 +101,7 @@ def add_emotional(request, diary_id):
     form = EmotionalForm(request.POST)
     if form.is_valid():
         new_emotional = form.save(commit=False)
-        new_emotional.diary_id = diary_id
+        new_emotional.diary_key_id = diary_id        
         new_emotional.save()
     return redirect('diary-detail', diary_id=diary_id)
 
@@ -111,7 +110,7 @@ def add_emotional(request, diary_id):
 
 class EmotionalUpdate(UpdateView):
     model = Emotional
-    fields = '__all__'
+    fields = ['community_check','time_spent','community_activities' ,'gratitude_list', 'vices','drink', 'number_of_drinks', 'evening_mood' , 'morning_mood']
     success_url = '/diary/'
 
 
