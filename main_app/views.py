@@ -57,6 +57,7 @@ def add_physical(request, diary_id):
     if form.is_valid():
         new_physical = form.save(commit=False)
         new_physical.diary_id = diary_id
+        print(new_physical.diary_id)
         new_physical.save()
     return redirect('diary-detail', diary_id=diary_id)
 

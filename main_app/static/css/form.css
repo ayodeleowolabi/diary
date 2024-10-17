@@ -1,41 +1,62 @@
-.form-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    
+/* Parent container to hold all three sections */
+.diary-container-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+  gap: 20px; /* Adds space between the columns */
+  width: 100%; /* Ensures the container takes up full width */
+  padding: 20px; /* Adds padding around the container */
+  box-sizing: border-box; /* Ensures padding is included in the element's width/height */
+}
+
+/* Styling for each individual diary section */
+.physical {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9; /* Light background for each form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
+  box-sizing: border-box;
+}
+
+/* Style form elements within the container */
+.diary-container form input,
+.diary-container form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: var(--font-l);
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Button styling */
+.diary-container .btn {
+  align-self: flex-end;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.diary-container .btn:hover {
+  background-color: #31b0d5;
+}
+
+/* Responsive design for smaller screens: switch to 2 columns */
+@media (max-width: 1200px) {
+  .diary-container-wrapper {
+      grid-template-columns: repeat(2, 1fr); /* Adjusts to 2 columns */
   }
-  
-  table {
-    padding: 0 40px;
-    width: 100%;
-    border-spacing: 0 20px;
+}
+
+/* Responsive design for very small screens: switch to 1 column */
+@media (max-width: 768px) {
+  .diary-container-wrapper {
+      grid-template-columns: 1fr; /* Adjusts to 1 column */
   }
-  
-  th {
-    text-align: left;
-    padding: 6px 20px 0 0;
-    font-weight: normal;
-    vertical-align: top;
-    font-size: var(--font-reg);
-  }
-  
-  td {
-    max-width: 60%;
-  }
-  
-  td > * {
-    width: 100%;
-    padding: 2px 4px;
-    font-size: var(--font-l);
-  }
-  
-  td > textarea {
-    height: calc(4 * var(--font-l) + 8px);
-    font-family: inherit;
-  }
-  
-  .btn {
-    align-self: flex-end;
-    margin-right: 40px;
-  }
-  
+}

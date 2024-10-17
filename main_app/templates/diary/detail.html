@@ -8,10 +8,10 @@
 {% if today %}
 <h1> Diary log for {{diary.date}} </h1>
 {% else %}
-<h1> Diary for {{ diary.date }}</h1>
+<h1> {{ diary.date }}</h1>
 {% endif %}
 
-<section class="diary-container physical">
+<section class="diary-container">
     
     <h2> Physical</h2>
     {% if diary.physical_set.count%}
@@ -35,7 +35,7 @@
     </div>
     <form 
         method="post" 
-        class="subsection-content" 
+        class="diary-container" 
         autocomplete="off"
         action="{% url 'add-physical' diary.id%}">
         {%csrf_token%}
@@ -47,14 +47,17 @@
 {%endblock%}
 
 {% block contenttwo %}
-<section class="diary-container mental">
+<section class="diary-container">
     <h2> Mental</h2>
     {% if diary.mental_set.count %}
     {% for diary in diary.mental_set.all%}
     <ul>
-        <p>{{diary.fears}}</p>
-        <p>{{diary.meditation}}</p>
-        <p>{{diary.goals}}</p>
+        <p>Fears: {{diary.fears}}</p>
+        <p>Desires: {{diary.desires}}</p>
+        <p> Meditation time: {{diary.time_spent}}</p>
+        <p> Meditation:{{diary.meditation}}</p>
+       
+     
         
     </ul>
     <div class='mental-actions'>
@@ -62,12 +65,12 @@
         <a href="{% url 'mental-delete' diary.id%}" class="btn danger">Delete</a> 
     {% endfor %}
     {% else %}
-    <div class="subsection-content">
+    <div class="diary-container">
      
     </div>
     <form 
         method="post" 
-        class="subsection-content" 
+        class="diary-container" 
         autocomplete="off"
         action="{% url 'add-mental' diary.id%}">
         {%csrf_token%}
@@ -86,12 +89,11 @@
     {% if diary.emotional_set.count %}
     {% for diary in diary.emotional_set.all%}
     <ul>
-        <p>{{diary.community_check}}</p>
-        <p>{{diary.time_spent}}</p>
-        <p>{{diary.gratitude_list}}</p>
-        <p>{{diary.morning_mood}}</p>
-        <p>{{diary.evening_mood}}</p>
-        <p>{{diary.gratitude_list}}</p>
+        <p>Community: {{diary.community_check}}</p>
+        <p>Time Spent: {{diary.time_spent}}</p>
+        <p>Gratitude List: {{diary.gratitude_list}}</p>
+        <p>Morning mood: {{diary.morning_mood}}</p>
+        <p>Evening mood: {{diary.evening_mood}}</p>
         
     </ul>
     <div class='emotional-actions'>
@@ -104,7 +106,7 @@
     </div>
     <form 
         method="post" 
-        class="subsection-content" 
+        class="diary-container" 
         autocomplete="off"
         action="{% url 'add-emotional' diary.id%}">
         {%csrf_token%}
@@ -113,7 +115,7 @@
         <button type="submit" class="btn submit"> Add Emotional Entry</button>
     </form>
     {% endif %}
-    <a href="{% url 'physical-delete' diary.id%}" class="btn danger">Delete</a>
+
 
 </section>
 {%endblock%}

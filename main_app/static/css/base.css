@@ -15,16 +15,25 @@ body {
     font-weight: 400;
     font-style: normal;
     height: 100vh;
-    background-image: url('/static/images/brown.')
-  
+    background-color: black;
     
     
   }
 
 
-h2 {
-    text-align: center;
-  }
+li {
+  color: white; 
+}
+
+p{
+  color: white;
+}
+
+h1{
+  color:#FFFFFF;
+  text-align: center;
+  font-size: 90px;
+}
 
 
 .home-page{
@@ -37,7 +46,7 @@ h2 {
 }
 
 .welcome-container {
-  position: relative; /* Establish a stacking context for absolute positioning */
+  position: relative; 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -61,22 +70,11 @@ h2 {
 
 
 
-.floating-element {
-  position: absolute;
-  top: -40px;
-  right: -50px;
-  width: 150px;
-  height: 150px;
-  background:rgba(255, 69, 0, 0.8);
-  border-radius: 60%;
-  z-index: 4;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  animation: float 6s ease-in-out infinite;
-}
 
 h2 {
   font-size: 3vmin;
   text-align: center;
+  color: white;
 }
 
 
@@ -88,6 +86,10 @@ nav a {
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    
   }
   
   nav a:hover {
@@ -110,32 +112,19 @@ nav a {
     
   }
 
-/* From Uiverse.io by MuhammadHasann */ 
 button {
-  align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
-  min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
-}
+    cursor: pointer;
+
+
+
+    box-shadow: 4px 4px var(--main-color);
+
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   
   button:hover {
     border-color: rgba(0, 0, 0, 0.15);
@@ -144,18 +133,34 @@ button {
     animation: wind 2s ease-in-out infinite;
   }
   
+label{
+  color: #FFFFFF;
+}
 
-
-  .login {
+.login {
+    margin-top: 30vmin;
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
+    justify-content: center;
     width: 100%;
     justify-content: center;
-    
 
-  }
+}
+
+input {
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 10px;
+  outline: none;
+}
+  
+
   
   @keyframes wind {
     0% {

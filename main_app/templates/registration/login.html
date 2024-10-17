@@ -2,9 +2,9 @@
 {% load static %} 
 <link rel="stylesheet" href="{% static 'css/form.css' %}" /> 
 {% endblock %} {% block content %}
-<div class="page-header" class="login">
-    <h2>Log In</h2>
-    <form method="post" class="login">
+<div class="page-header">
+  <form method="post" class="login">
+    <h1>your diary</h1>
       {% csrf_token %}
       {{ form }}
       <button type="submit">Log In</button>

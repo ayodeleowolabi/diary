@@ -58,9 +58,10 @@ class Physical(models.Model):
     body_part_worked = models.CharField(blank=True, null=True)
     length_of_workout = models.IntegerField(default=0, blank=True, null=True)
     physical_goals = models.ForeignKey(Goals, on_delete=models.CASCADE, blank=True, null=True)
-
     workout_link = models.TextField('Type of Workout', blank=True, null=True)
     diary_key = models.ForeignKey(Diary, on_delete=models.CASCADE)
+    
+    
     
     def __str__(self):
         return f'Breakfast: {self.breakfast}, Lunch: {self.lunch}, Dinner: {self.dinner}, Snacks: {self.snacks}'

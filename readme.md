@@ -24,7 +24,7 @@ When you open the app, start by signing up with a username and password. When yo
 
 ## Future Updates
 * Creating a goals page. 
-* More CSS. 
+* Editing my CSS. 
 * Adding photos through AWS.
 
 
@@ -32,4 +32,4 @@ When you open the app, start by signing up with a username and password. When yo
 You can use my first ever app creation **howUdoin?** [here](https://howudoin-fa786f7b4a41.herokuapp.com/)
 
 ### Screenshot
-![quizgame](howUdoin.png)
+![yourdiary](yourdiary.png)

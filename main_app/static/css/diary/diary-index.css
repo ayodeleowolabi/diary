@@ -4,25 +4,25 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: baseline;
-    margin: 2rem auto; /* Add margin for better spacing */
+    margin: 2rem auto; 
 }
 
 .card {
-    width: 15vmin; /* Larger to enhance readability */
-    margin: 2vmin; /* More balanced margin */
+    width: 15vmin; 
+    margin: 2vmin; 
     border: var(--borders);
     box-shadow: var(--card-box-shadow);
-    transition: transform 0.3s ease; /* Add transition for hover effects */
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05); /* Slight hover effect to engage user */
+    transform: scale(1.05); 
 }
 
 .card-img-container {
-    width: 10vmin; 
-    height: 10vmin;
-    margin: 0 auto; /* Centers the image */
+    width: 20vmin; 
+    height: 20vmin;
+    margin: 0 auto; 
 }
 
 .card-img-container img {
@@ -33,7 +33,7 @@
 
 .card-content {
     padding: 1rem;
-    text-align: center; /* Center text within the card */
+    text-align: center; 
 }
 
 .card > a {
@@ -47,11 +47,11 @@
 }
 
 .page-header {
-    text-align: center; /* Center page header */
+    text-align: center;
     margin-bottom: 2rem;
 }
 
 .page {
-    max-width: 80vmin; /* Increase width to improve content visibility */
+    max-width: 80vmin;
     margin: 0 auto;
 }
