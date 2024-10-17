@@ -33,4 +33,4 @@ When you open the app, start by signing up with a username and password. When yo
 You can use my first ever app creation **myDiary** [here](https://mylife-5a9ffa7a8d1c.herokuapp.com/)
 
 ### Screenshot
-![yourdiary](yourdiary.png)
+![diary](diary.png)
