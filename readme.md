@@ -26,10 +26,11 @@ When you open the app, start by signing up with a username and password. When yo
 * Creating a goals page. 
 * Editing my CSS. 
 * Adding photos through AWS.
+* Adding latitude and longitude
 
 
 ## Live Demo
-You can use my first ever app creation **howUdoin?** [here](https://howudoin-fa786f7b4a41.herokuapp.com/)
+You can use my first ever app creation **myDiary** [here](https://mylife-5a9ffa7a8d1c.herokuapp.com/)
 
 ### Screenshot
 ![yourdiary](yourdiary.png)
